@@ -1,6 +1,8 @@
 node_modules
 dist
-.vscode
+/.vscode
 
 tmp/*
 !tmp/.gitkeep
+.DS_Store
+coverage
