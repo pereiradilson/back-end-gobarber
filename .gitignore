@@ -3,6 +3,8 @@ dist
 .vscode/
 
 tmp/*
+tmp/uploads/*
+!tmp/uploads/.gitkeep
 !tmp/.gitkeep
 .DS_Store
 coverage
