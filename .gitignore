@@ -4,7 +4,8 @@ dist
 .env
 ormconfig.json
 
-!/tmp/**/.gitkeep
+tmp/*
+!tmp/.gitkeep
 
 .DS_Store
 coverage
