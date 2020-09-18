@@ -44,7 +44,7 @@ jobs:
         source: ".,!node_modules"
         target: "~/app/gobarber"
         
-    - name: Run YARN and migrations and restart PM2
+    - name: Run yarn and migrations
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -55,4 +55,14 @@ jobs:
           cd ~/app/gobarber
           yarn
           ./node_modules/.bin/typeorm migration:run
-          pm2 restart gobarber-api
+          
+    - name: Run stop PM2 and start PM2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        port: ${{ secrets.SSH_PORT }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          pm2 stop gobarber-api
+          pm2 start gobarber-api
